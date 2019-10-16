@@ -22,6 +22,7 @@ def find_next_page(soup_object):
     next_page_no = int(next_page_url[next_page_url.find("page=") + 5:])
     return next_page_no, next_page_url
 
+# Function to retrieve all the thread content
 def make_thread_object(thread_soup):
     # accessing soup object 
     page = thread_soup.select('main.ipsLayout_container > div > div > div > div')
@@ -29,7 +30,6 @@ def make_thread_object(thread_soup):
     all_thread = thread_page.find("div", {"id": "elPostFeed"})
 
     # Get all the userid URL from the href tag
-    # userid_url = all_thread.find_all(name='a', class_='ipsType_break')
     userid_url = all_thread.select('article > div > h3 > a')
     comment_url = all_thread.find_all(name='div', class_='ipsType_normal ipsType_richText ipsContained')
     return userid_url, comment_url, thread_page
@@ -45,6 +45,7 @@ count = 1
 
 # url for the thread to crawl 
 thread_url = "https://www.mycarforum.com/forums/topic/2703413-mercedes-owners-thread/"
+topic = thread_url[thread_url.find("topic/") + 6:-1]
 
 # Request from url and convert to BeautifulSoup Object
 thread_soup = make_soup(thread_url)
@@ -76,7 +77,7 @@ while (next_page_no <= last_page_no):
     userid_url, comment_url, thread_page = make_thread_object(thread_soup)
     count += 1
 
-with open('./data/mycarforum.json', 'w') as file:
+with open('./data/%s.json' % topic, 'w') as file:
     json.dump(comment_list, file, indent=4, sort_keys=False)
 end_time = datetime.datetime.utcnow()
 print("Total time taken (mins): " +str(((end_time-start_time).total_seconds() / 60)))
