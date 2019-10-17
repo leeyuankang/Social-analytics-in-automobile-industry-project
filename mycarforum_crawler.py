@@ -39,6 +39,7 @@ start_time = datetime.datetime.utcnow()
 
 # url for the thread to crawl 
 thread_url_list = ["https://www.mycarforum.com/forums/topic/2715945-mercedes-amg-most-powerful-4-cylinders-engine/",
+              "https://www.mycarforum.com/forums/topic/2703413-mercedes-owners-thread/",
               "https://www.mycarforum.com/forums/topic/2668830-new-2nd-generation-mercedes-b-class/",
               "https://www.mycarforum.com/forums/topic/2699114-mercedes-glc/",
               "https://www.mycarforum.com/forums/topic/2717175-2019-mercedes-benz-glb-x247/",
