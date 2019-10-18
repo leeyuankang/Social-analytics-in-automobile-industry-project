@@ -38,12 +38,11 @@ def make_thread_object(thread_soup):
 start_time = datetime.datetime.utcnow()
 
 # url for the thread to crawl 
-thread_url_list = ["https://www.mycarforum.com/forums/topic/2711065-2019-mercedes-a-class-w177-and-sedan-v177/",
-              "https://www.mycarforum.com/forums/topic/2713550-2020-2nd-generation-mercedes-benz-cla-c118/",
-              "https://www.mycarforum.com/forums/topic/674075-mercedes-benz-cls-350500/",
-              "https://www.mycarforum.com/forums/topic/2686601-mercedes-a45-amg/",
-              "https://www.mycarforum.com/forums/topic/2677881-mercedes-e200-or-e230/",
-              "https://www.mycarforum.com/forums/topic/2709111-2020-mercedes-benz-maybach-gls-x167/"]
+thread_url_list = ["", 
+              "",
+              "",
+              "",
+              ""]
 
 for thread_url in thread_url_list:
     # set counter to track crawling  progress
