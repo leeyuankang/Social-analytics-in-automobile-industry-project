@@ -1,0 +1,32 @@
+[
+    {
+        "car_name": "Alpine A110",
+        "brand": "Alpine",
+        "price": "$238,800 "
+    },
+    {
+        "car_name": "Aston Martin DB11",
+        "brand": "Aston+Martin",
+        "price": "POA"
+    },
+    {
+        "car_name": "Aston Martin Vantage",
+        "brand": "Aston+Martin",
+        "price": "$699,000 "
+    },
+    {
+        "car_name": "Aston Martin DB11(Parallel Imported)",
+        "brand": "Aston+Martin",
+        "price": "$643,000"
+    },
+    {
+        "car_name": "Aston Martin V12 DBS Superleggera",
+        "brand": "Aston+Martin",
+        "price": "POA"
+    },
+    {
+        "car_name": "Aston Martin DB11 Volante",
+        "brand": "Aston+Martin",
+        "price": "$849,000 "
+    }
+]
