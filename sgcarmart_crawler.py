@@ -5,6 +5,7 @@ import urllib
 import requests
 import random 
 import json 
+import sys
 
 # Function to make soup object
 def make_soup(url):
@@ -16,8 +17,6 @@ def make_soup(url):
 
 # Get start time with current date and time 
 start_time = datetime.datetime.utcnow()
-
-car_list = []
 
 new_cars_url = "https://www.sgcarmart.com/new_cars/index.php"
 web = "https://www.sgcarmart.com/new_cars/"
@@ -36,7 +35,9 @@ for ext in new_cars_exts:
 
 for url in new_cars_url_list:
 
-    sleep_time = random.randint(1,5)
+    car_list = []
+
+    sleep_time = random.randint(1,4)
     print(f'Sleeping time {sleep_time}s')
     time.sleep(sleep_time)
 
@@ -73,15 +74,11 @@ for url in new_cars_url_list:
             car = review_soup.find_all('div', attrs={'style': 'width:445px;height:35px;float:left;overflow:hidden;'})
             car_name = car[0].get_text()
 
-            user_list = []
-            review_list = []
             users = review_soup.find_all('td', attrs={'style': 'padding-top:4px;'})
             review = review_soup.find_all('p', attrs={'style': 'padding-top:15px'})
             if len(users) > 1:
                 for i in range(len(users)):
                     car_dict = {}
-                    user_list.append(users[i].find('strong').text)
-                    review_list.append(review[i])
 
                     car_dict['review'] = review[i].text
                     car_dict['user_name'] = users[i].find('strong').text
@@ -95,13 +92,13 @@ for url in new_cars_url_list:
         print("Keyboard interrupted. Crawler will end....")
         raise
     except Exception as e:
-        print(f'Error occured when crawling food category: from menu')
+        print(f'Error occured when crawling car model {brand}, {car_link}')
         print("Error: {0}".format(sys.exc_info()))
     
-with open('./SGC_data/sgcarmart.json', 'w') as file:
-    json.dump(car_list, file, indent=4, sort_keys=False)
-end_time = datetime.datetime.utcnow()
-print("Total time taken (mins): " +str(((end_time-start_time).total_seconds() / 60)))
+    with open('./SGC_data/%s.json' % brand, 'w') as file:
+        json.dump(car_list, file, indent=4, sort_keys=False)
+    end_time = datetime.datetime.utcnow()
+    print("Total time taken (mins): " +str(((end_time-start_time).total_seconds() / 60)))
 
 
     
